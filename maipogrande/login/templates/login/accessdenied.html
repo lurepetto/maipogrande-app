@@ -1,0 +1,20 @@
+{% extends 'core/base-inicial.html' %}
+{% load static %}
+
+{% block titulo %}
+  Acceso denegado
+{% endblock %}
+
+{% block contenido %}
+      <p class="lead">
+      No ha sido posible iniciar la sesión del usuario, esto puede ocurrir debido a las siguientes situaciones:
+      <ul class="text-justify">
+        <li>El usuario no esta registrado en feria virtual.</li>
+        <li> El nombre de usuario y/o contraseña ingresadas no son las correctas.</li>
+        <li>La cuenta de usuario esta inhabilitada.</li>
+      </ul>
+      <p class="text-justify">
+        Comunique el problema al administrador del sistema.
+      </p>
+    </p>
+{% endblock %}

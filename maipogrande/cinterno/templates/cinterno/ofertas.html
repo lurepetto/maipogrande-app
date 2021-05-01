@@ -1,0 +1,37 @@
+{% if lista_ofertas %}
+    <h3>Novedades de "Feria Virtual"</h3>
+    {% for o in lista_ofertas %}
+        <div>
+            <b>            
+                {{ o.0.TypeDescription }} - {{ o.0.Description}}
+            </b><br>
+            {% if o.0.Discount %}
+                {% if o.0.OfferType == 1 %}
+                    <p class = "lead">
+                        Todos los productos en esta oferta están en un 
+                        {{ o.0.Discount|floatformat:0 }}% de descuento, 
+                        aproveche esta oportunidad. 
+                    </p>
+                {% else %}
+                    <p class = "lead">
+                        Aproveche nuestra liquidación de productos por fin de temporada, 
+                        además regalamos un  
+                        {{ o.0.Discount|floatformat:0 }}% de descuento. 
+                        No se pierda esta liquidación de Feria Virtual. 
+                    </p>
+                {% endif %}
+            {% endif %}
+            <ul>
+                {% for d in o.1 %}
+                    <li>
+                        {{ d.ProductName }} 
+                        precio normal ${{ d.ActualValue|floatformat:0 }}, 
+                        valor oferta ${{ d.OfferValue|floatformat:0 }},
+                        {{ d.Percent }}% de descuento.  
+                    </li>
+                {% endfor %}
+            </ul>    
+        <hr width="810" align="left">
+        </div>
+    {% endfor %}
+{% endif %}

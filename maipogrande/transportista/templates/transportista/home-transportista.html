@@ -1,0 +1,154 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Transportista
+{% endblock %}
+
+{% block menu %}
+    <a class="enlace" href="{% url 'iniciarComercial' %}">Datos comerciales</a>
+    <br><br>
+    <a class="text-justify text-center font-weight-bold" style="color: white;"><b>Vehiculos</b></a>
+    <br>
+    <a class="enlace" href="{% url 'actualizarListaVehiculos' %}">Lista de vehiculos</a>
+    <br>
+    <a class="enlace" href="{% url 'registrarVehiculo' %}">Agregar vehiculo</a>
+    <br><br>
+    <a class="text-justify text-center font-weight-bold" style="color: white;"><b>Contratos</b></a>
+    <br>
+    <a class="enlace" href="{% url 'listarContratos' %}">Lista de contratos</a>
+    <br><br>
+    <a class="text-justify text-center font-weight-bold" style="color: white;"><b>Subastas</b></a>
+    <br>
+    <a class="enlace" href="{% url 'listarSubastas' %}">Lista de subastas</a>
+    <br><br>
+    <a class="text-justify text-center font-weight-bold" style="color: white;"><b>Despachos</b></a>
+    <br>
+    <a class="enlace" href="{% url 'listarDespachos' %}">Ordenes de despacho</a>
+    <br><br>
+    <a class="text-justify text-center font-weight-bold" style="color: white;"><b>Historial de Despachos</b></a>
+    <br>
+    <a class="enlace" href="{% url 'listarDespachosEntregados' %}">Entregados</a>
+    <br>
+    <a class="enlace" href="{% url 'listarDespachosCancelados' %}">Cancelados</a>
+    <br><br>
+    <a class="text-justify text-center"><b>Reportes</b></a>
+    <br>
+    <a class="enlace" href="{% url 'verEstadisticasDespachos' %}"> Estadísticas </a>
+    {% endblock %}
+
+{% block contenido %}
+
+  <!-- Header -->
+  <header class="bg-light mb-5">
+    <div class="container-fluid h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-10">
+          <h1 class="display-4 text-black mt-5 mb-2">Zona de transportistas</h1>
+          <p class="lead mb-5 text-black">
+            Bienvenido a la zona de transportistas de la plataforma, 
+            en esta podrá realizar todas sus actividades
+            de forma exclusiva, esperamos que sea de su satisfacción, en el 
+            apartado izquierdo, podrá realizar las acciones que usted 
+            requiera para cubrir sus necesidades.
+            </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mb-5">
+        <h2>Participe activamente</h2>
+        <hr>
+        <p class="text-justify text-black">
+            Periodicamente  se realizan subastas para que 
+            los pedidos de nuestros clientes sean entregados,
+            en estas subastas de transporte, todos los participantes pueden
+            adjudicarse un pedido el cual deberán entregar a 
+            nuestros clientes, según los tiempos establecidos.
+        </p>
+        <p>
+            Cuando se realice una subasta, los transportistas serán notificados por medio de correo electrónico 
+            a la cuenta registrada en su perfil, si desea participar, tan solo debe 
+            aceptar la solicitud y validarla en la plataforma, mediante la 
+            opción de participar en subasta.
+        </p>
+      </div>
+      <div class="col-md-4 mb-5">
+        <h2>Contactenos</h2>
+        <hr>
+        <address>
+          <strong>Maipo Grande</strong>
+          <br>Hernest Bugenhagen 666
+          <br>Valdivia, Chile.
+          <br>
+        </address>
+        <address>
+          <abbr title="Phone">P:</abbr>
+          (563) 68 23 15144
+          <br>
+          <abbr title="Email">E:</abbr>
+          <a href="mailto:#">maipogrande-fv@gmail.com</a>
+        </address>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="{% static 'transportista/img/comercial-data.jpg' %}" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Datos comerciales</h4>
+            <p class="card-text">
+              Usted podrá:
+              <ul>
+                  <li>Ingresar sus datos comerciales.</li>
+                  <li>Actualizar datos comerciales.</li>
+              </ul>              
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="{% static 'transportista/img/vehicle.jpg' %}" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Transportes</h4>
+            <p class="card-text">
+              <ul>
+                <li>Ingresar nuevos transportes.</li>
+                <li>Actualizar información de sus transportes.</li>
+                <li>Visualizar el estado de sus transportes.</li>
+            </ul>              
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="{% static 'transportista/img/transactions.png' %}" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Transacciones</h4>
+            <p class="card-text">
+              <ul>
+                <li>Visualizar su estado de transportes.</li>
+                <li>Ver su historial de trabajos.</li>
+                <li>Postular a subastas de transportes de pedidos.</li>
+            </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+{% endblock %}

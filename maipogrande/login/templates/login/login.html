@@ -1,0 +1,27 @@
+{% extends 'core/base-inicial.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block titulo %}
+  Inicio de sesión
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+  <form class="text-justify border border-light" method="POST">
+    <p class="lead mb-4 px-5 text-center">
+      Ingrese sus credenciales de inicio de sesión, luego presione el botón "Entrar".
+    </p>
+    <div class="form-group col-xs-1 col-sm-4 text-center" style="margin-left:auto; margin-right:auto;">
+    {% csrf_token %}
+    {% if form.non.field.errors %}
+      {{ form.non.field.errors }}
+    {% endif %}
+    {{ form|bootstrap }}
+  </div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-success mt-3">Iniciar Sesión</button>
+  </div>
+  </form>
+</div>
+{% endblock %}

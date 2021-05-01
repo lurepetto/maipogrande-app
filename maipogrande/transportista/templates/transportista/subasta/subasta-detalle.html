@@ -1,0 +1,105 @@
+{% extends 'core/base-inicial.html' %}
+{% load static %}
+
+{% block titulo %}
+    Resultados de subasta
+{% endblock %}
+
+{% block contenido %}
+    <div class="table-responsive justify-content-center">
+        <h4>Datos de la subasta</h4>
+        <table class="table table-striped table-hover col-6 bg-light border border-light p-5 text-justify text-black" style="margin-left:auto; margin-right:auto;">
+            <tbody class="justify-content-center">
+                <tr>
+                    <td  class="py-0 px-5">Subasta Nro.</td>
+                    <td  class="py-0 px-5">{{ subasta.id }}</td>
+                </tr>
+                <tr>
+                    <td class="py-0 px-5">Fecha de inicio</td>
+                    <td  class="py-0 px-5">{{ subasta.AuctionDate }}</td>
+                </tr>
+                <tr>
+                    <td class="py-0 px-5">Valor Propuesto</td>
+                    <td class="py-0 px-5">${{ subasta.Value }} </td>
+                </tr>
+                <tr>
+                    <td class="py-0 px-5">Peso de la carga</td>
+                    <td class="py-0 px-5">{{ subasta.Weight }} kg</td>
+                </tr>
+                <tr>
+                    <td class="py-0 px-5">Fecha de término</td>
+                    <td class="py-0 px-5">{{ subasta.LimitDate }}</td>
+                </tr>
+                <tr>
+                    <td class="py-0 px-5">Observación</td>
+                    <td class="py-0 px-5" style="text-transform: uppercase">{{ subasta.Observation }}</td>
+                </tr>
+                <tr>
+                    <td class="py-0 px-5">Nombre de la compañia</td>
+                    <td class="py-0 px-5" style="text-transform: uppercase">{{ subasta.CompanyName }}</td>
+                </tr>
+                <tr>
+                    <td class="py-0 px-5">Destino y método de contacto</td>
+                    <td class="py-0 px-5" style="text-transform: uppercase">{{ subasta.Destination }}<br>
+                        {{ subasta.PhoneNumber }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Detalle de la subasta</h4>
+        <table class="table table-striped table-hover col-6 bg-light border border-light p-5 text-justify text-black">
+            <theader>
+                <th></th>
+                <th>Producto</th>
+                <th>Valor unitario</th>
+                <th>Cantidad</th>
+                <th>Valor total</th>
+            </theader>
+            <tbody>
+                    {% for producto in productos %}
+                        <tr>
+                            <td class ="text-right py-0">{{ forloop.counter }}</td>
+                            <td class="py-0" style="text-transform: uppercase">{{ producto.Product }}</td>
+                            <td class="py-0">{{ producto.UnitValue }}<br></td>
+                            <td class="py-0">{{ producto.Quantity }}<br></td>
+                            <td class="py-0">{{ producto.TotalValue }}<br></td>
+                        </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+
+    <h4>Top de postores</h4>
+    <table class="table table-hover table-hover table-striped">
+        <theader>
+            <th>Puesto</th>
+            <th>Postor</th>
+            <th>Valor</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+        </theader>  
+        <tbody id="id_pujita">
+            {% for puja in pujas %}
+            {% if forloop.counter == 1%}
+                <tr style="background-color:#43C845">
+                    <td class ="py-0">{{ forloop.counter }}</td>
+                    <td class="py-0" style="text-transform: uppercase">{{ puja.Bidder }}</td>
+                    <td class="py-0">{{ puja.Value }}</td>
+                    <td class="py-0">{{ puja.Date}}<br></td>
+                    <td class="py-0">{{ puja.Hour }}<br></td>
+                </tr>
+            {% else %}
+            <tr>
+                <td class ="py-0">{{ forloop.counter }}</td>
+                <td class="py-0" style="text-transform: uppercase">{{ puja.Bidder }}</td>
+                <td class="py-0">{{ puja.Value }}</td>
+                <td class="py-0">{{ puja.Date}}<br></td>
+                <td class="py-0">{{ puja.Hour }}<br></td>
+            </tr>    
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-success" href="{% url 'listarSubastas' %}" role="button"> Volver </a>
+{% endblock %}
+
+
+

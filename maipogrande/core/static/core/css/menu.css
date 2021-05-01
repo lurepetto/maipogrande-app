@@ -1,0 +1,22 @@
+.lateral{
+  background-color: gray;
+}
+
+.enlace:link{
+  color: white;
+  width: 15px;
+}
+
+.enlace:hover {
+  background-color: #2b4747;
+  color: white;
+  text-decoration: none;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}

@@ -1,0 +1,84 @@
+{% extends 'core/base-inicial.html' %}
+
+{% block titulo %}
+    Estadísticas de entregas
+{% endblock %}
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% block contenido %}
+{% if despachos %}
+    <br><br>
+    <h4 class="text-justify">Entregas realizadas</h4>
+    <br>
+    <div class="text-justify col-md-12">
+        <table >
+            <tr>
+                <td>
+                    <table>
+                        <theader>                   
+                            <th class="px-3" >Nro Despacho</th>
+                            <th class="px-3" >Valor Despacho</th>
+                        </theader>
+                        <tbody>
+                            {% for despacho in despachos %}
+                            <tr>
+                                <td class="px-3">{{ despacho.id}}</td>
+                                <td class="px-3">${{ despacho.DispatchValue|floatformat:0 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+
+                    </table>
+                </td>
+                <td valign="top">
+                    {{plot_div|safe}}
+                </td>
+            </tr>
+        </table>
+        <br>
+        <h6>Total: ${{ valor_total|floatformat:0 }}</h6>
+        <h6>Promedio de valor de despacho: ${{ valor_promedio|floatformat:0 }}</h6>
+        <h6>Valor máximo de despachos: ${{ valor_maximo|floatformat:0 }}</h6>
+        <h6>Valor mínimo de despachos: ${{ valor_minimo|floatformat:0 }}</h6>
+        <br>
+    </div>
+    <br><br>
+    <h4 class="text-justify">Despachos por día</h4>
+    <div class="text-justify col-md-12">
+        <table >
+            <tr>
+                <td valign="top">
+                    {{plots_div|safe}}
+                </td>
+                <td>
+                    <table>
+                        <theader>
+                            <th>Fecha</th>
+                            <th class="px-5">Valor de Despacho</th>
+                        </theader>
+                        <tbody>
+                            {% for despacho in despachos %}
+                            <tr>
+                                <td>{{ despacho.DispatchDate}}</td>
+                                <td class="px-5">${{ despacho.DispatchValue|floatformat:0 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+{% else %}
+    <p class="lead text-justify">
+        Por el momento usted no posee despachos.
+        En cuanto se realice un despacho,
+        se visualizarán las estadísticas de despacho.<br>
+    </p>
+{% endif %}
+    <a class="btn btn-success"
+        href="{% url 'dinamicHome' %}" role="button"> Volver </a>
+
+{% endblock %}
